@@ -368,13 +368,14 @@ def ingestion_pipeline():
     ingest_docs_task = ingest_documents(input_artifact=format_docs_task.outputs['splits_artifact'])
     ingest_docs_task.set_accelerator_type("nvidia.com/gpu").set_accelerator_limit("1")
 
-    kubernetes.use_secret_as_env(
-        ingest_docs_task,
-        secret_name="weaviate-api-key-secret",
-        secret_key_to_env={"AUTHENTICATION_APIKEY_ALLOWED_KEYS": "WEAVIATE_API_KEY"}
-    )
+    #kubernetes.use_secret_as_env(
+    #    ingest_docs_task,
+    #    secret_name="weaviate-api-key-secret",
+    #    secret_key_to_env={"AUTHENTICATION_APIKEY_ALLOWED_KEYS": "WEAVIATE_API_KEY"}
+    #)
     ingest_docs_task.set_env_variable('WEAVIATE_HOST', 'http://weaviate-vector-db-default.apps.cluster-bnwvq.bnwvq.sandbox3003.opentlc.com')
     ingest_docs_task.set_env_variable('WEAVIATE_PORT', '80')
+    ingest_docs_task.set_env_variable('WEAVIATE_API_KEY', 'l+M/MX9iI+f98AbsibHegenNY21q32M1AViRX5L8zHo=')
 
     kubernetes.add_toleration(
         format_docs_task,
