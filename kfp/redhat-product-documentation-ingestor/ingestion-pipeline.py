@@ -20,19 +20,19 @@ def load_documents() -> List:
 def connect_to_weaviate():
     import os
 
-    WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY")
+    WEAVIATE_API_KEY = "l+M/MX9iI+f98AbsibHegenNY21q32M1AViRX5L8zHo="
     if WEAVIATE_API_KEY is None:
         print("Weaviate API key is missing")
         exit(1)
     print('Weaviate API key is present')
 
-    WEAVIATE_HOST = os.getenv("WEAVIATE_HOST")
+    WEAVIATE_HOST = "http://weaviate-vector-db-default.apps.cluster-bnwvq.bnwvq.sandbox3003.opentlc.com"
     if WEAVIATE_HOST is None:
         print("Weaviate host is missing")
         exit(1)
     print('Weaviate Host:', WEAVIATE_HOST)
 
-    WEAVIATE_PORT = os.getenv("WEAVIATE_PORT")
+    WEAVIATE_PORT = "80"
     if WEAVIATE_PORT is None:
         print("Weaviate port is missing")
         exit(1)
