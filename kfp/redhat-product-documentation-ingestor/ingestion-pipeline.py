@@ -373,8 +373,8 @@ def ingestion_pipeline():
         secret_name="weaviate-api-key-secret",
         secret_key_to_env={"AUTHENTICATION_APIKEY_ALLOWED_KEYS": "WEAVIATE_API_KEY"}
     )
-    ingest_docs_task.set_env_variable('WEAVIATE_HOST', 'http://weaviate-vector-db')
-    ingest_docs_task.set_env_variable('WEAVIATE_PORT', '8080')
+    ingest_docs_task.set_env_variable('WEAVIATE_HOST', 'http://weaviate-vector-db-default.apps.cluster-bnwvq.bnwvq.sandbox3003.opentlc.com')
+    ingest_docs_task.set_env_variable('WEAVIATE_PORT', '80')
 
     kubernetes.add_toleration(
         format_docs_task,
